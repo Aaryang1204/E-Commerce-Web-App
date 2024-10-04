@@ -1,0 +1,27 @@
+{% extends 'store/main.html' %}
+{% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    {% block content %}
+    
+
+    <div class="row">
+        {% for product in products %}
+        <div class="col-lg-4">
+            <div>
+            <img class="product-image" height="300px" width="100%" src="{{product.imageURL}}"/>  
+            </div>
+            <div class="card-element product">
+                <h6 class="product" style="display: inline">{{product.name}}</h6>
+                <h6 class="price" style="display: inline;">₹{{product.price|floatformat:2}}</h6>
+                <hr>
+                <div class="d-grid gap-2">
+                    <button data-product={{product.id}} data-action="add" class="btn btn-primary update-cart" type="button">Add to Cart</button>
+                    <button class="btn btn-primary" type="button">Buy Now</button>
+                </div>  
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {% endblock content %}
+    
